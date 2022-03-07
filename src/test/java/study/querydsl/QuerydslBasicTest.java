@@ -475,4 +475,30 @@ public class QuerydslBasicTest {
         }
     }
 
+    @Test
+    public void simpleProjection() throws Exception {
+        List<String> result = queryFactory
+                .select(member.username)
+                .from(member)
+                .fetch();
+
+        for (String s : result) {
+            System.out.println("s = " + s);
+        }
+    }
+
+    @Test
+    public void tupleProjection() {
+        List<Tuple> result = queryFactory
+                .select(member.username, member.age) // 여러개가 넘어오는 경우
+                .from(member)
+                .fetch();
+
+        for (Tuple tuple : result) {
+            System.out.println("tuple.get(member.username) = " + tuple.get(member.username));
+            System.out.println("tuple.get(member.age) = " + tuple.get(member.age));
+        }
+
+    }
+
 }
