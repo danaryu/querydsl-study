@@ -130,5 +130,4 @@ public class MemberJpaRepository {
     private BooleanExpression ageLoe(Integer ageLoe) {
         return ageLoe != null ? member.age.loe(ageLoe) : null;
     }
-
 }
